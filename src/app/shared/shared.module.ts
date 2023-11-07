@@ -14,35 +14,31 @@ import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dial
 
 
 @NgModule({
-  imports: [
-    CommonModule,
-    MaterialModule,
-  ],
-  declarations: [
-    BackButtonDirective,
-    InputDebounceDirective,
-    NotificationBarComponent,
-    ConfirmDialogComponent,
-    PageHeaderComponent,
-    PageHeaderBackComponent,
-    PageHeaderTitleComponent,
-  ],
-  entryComponents: [
-    NotificationBarComponent,
-    ConfirmDialogComponent,
-  ],
-  providers: [
-    ...sharedInterceptorProviders,
-    UnsavedChangesGuard,
-  ],
-  exports: [
-    MaterialModule,
-    BackButtonDirective,
-    InputDebounceDirective,
-    PageHeaderComponent,
-    PageHeaderBackComponent,
-    PageHeaderTitleComponent,
-  ],
+    imports: [
+        CommonModule,
+        MaterialModule,
+    ],
+    declarations: [
+        BackButtonDirective,
+        InputDebounceDirective,
+        NotificationBarComponent,
+        ConfirmDialogComponent,
+        PageHeaderComponent,
+        PageHeaderBackComponent,
+        PageHeaderTitleComponent,
+    ],
+    providers: [
+        ...sharedInterceptorProviders,
+        UnsavedChangesGuard,
+    ],
+    exports: [
+        MaterialModule,
+        BackButtonDirective,
+        InputDebounceDirective,
+        PageHeaderComponent,
+        PageHeaderBackComponent,
+        PageHeaderTitleComponent,
+    ]
 })
 
 export class SharedModule {
