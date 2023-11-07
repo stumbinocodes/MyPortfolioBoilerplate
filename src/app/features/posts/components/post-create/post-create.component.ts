@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core'
-import { FormBuilder, FormGroup, Validators } from '@angular/forms'
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms'
 import { Store } from '@ngrx/store'
 import { PostsState } from '../../store/posts.state'
 import { createPostsItem } from '../../store/posts.actions'
@@ -12,10 +12,10 @@ import { CanDeactivateComponentModel } from '../../../../shared/models/can-deact
   styleUrls: ['./post-create.component.scss'],
 })
 export class PostCreateComponent implements CanDeactivateComponentModel, OnInit {
-  public postForm: FormGroup
+  public postForm: UntypedFormGroup
 
   constructor(
-    private formBuilder: FormBuilder,
+    private formBuilder: UntypedFormBuilder,
     private store: Store<PostsState>,
     private notification: NotificationBarService,
   ) {
@@ -33,7 +33,7 @@ export class PostCreateComponent implements CanDeactivateComponentModel, OnInit 
     }
   }
 
-  private createPostCreateFormGroup(): FormGroup {
+  private createPostCreateFormGroup(): UntypedFormGroup {
     return this.formBuilder.group({
       date: [new Date(), Validators.required],
       title: ['', Validators.required],

@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core'
 import { ActivatedRoute, Params } from '@angular/router'
-import { FormBuilder, FormGroup, Validators } from '@angular/forms'
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms'
 import { Observable, Subscription } from 'rxjs'
 import { select, Store } from '@ngrx/store'
 import { CanDeactivateComponentModel } from '../../../../shared/models/can-deactivate-component.model'
@@ -17,13 +17,13 @@ import { NotificationBarService } from '../../../../shared/services/notification
   styleUrls: ['./post-update.component.scss'],
 })
 export class PostUpdateComponent implements CanDeactivateComponentModel, OnInit, OnDestroy {
-  public postForm: FormGroup
+  public postForm: UntypedFormGroup
   public post$: Observable<Post>
   private subscriptions: Subscription = new Subscription()
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    private formBuilder: FormBuilder,
+    private formBuilder: UntypedFormBuilder,
     private store: Store<PostsState>,
     private notification: NotificationBarService,
   ) {
@@ -61,7 +61,7 @@ export class PostUpdateComponent implements CanDeactivateComponentModel, OnInit,
     this.store.dispatch(deletePostsItem({id: postId}))
   }
 
-  private createPostFormGroup(post: Post): FormGroup {
+  private createPostFormGroup(post: Post): UntypedFormGroup {
     return this.formBuilder.group({
       id: [post ? post.id : null, Validators.required],
       date: [post ? post.date : new Date(), Validators.required],
